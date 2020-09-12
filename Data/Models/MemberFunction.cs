@@ -2,13 +2,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace escala_server.Data.Models
 {
-    public class MemberScale
+    public class MemberFunction
     {
         [Key]
         public int Id { get; set; }
 
-        public int ScaleId { get; set; }
-
         public int MemberId { get; set; }
+
+        public int FunctionId { get; set; }
     }
 }
