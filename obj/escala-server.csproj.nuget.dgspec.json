@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/home/luan/Documentos/www/escala-server/escala-server.csproj": {}
+    "C:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj": {}
   },
   "projects": {
-    "/home/luan/Documentos/www/escala-server/escala-server.csproj": {
+    "C:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/luan/Documentos/www/escala-server/escala-server.csproj",
+        "projectUniqueName": "C:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj",
         "projectName": "escala-server",
-        "projectPath": "/home/luan/Documentos/www/escala-server/escala-server.csproj",
-        "packagesPath": "/home/luan/.nuget/packages/",
-        "outputPath": "/home/luan/Documentos/www/escala-server/obj/",
+        "projectPath": "C:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj",
+        "packagesPath": "C:\\Users\\walme\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\walme\\Documents\\Luan\\escala-server\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/home/luan/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\walme\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -35,6 +42,24 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[5.0.0-alpha.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -53,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
