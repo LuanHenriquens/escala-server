@@ -5,7 +5,6 @@ namespace escala_server.Models
 {
     public class Song
     {
-        [Key]
         public long Id { get; set; }
         public string Name { get; set; }
         public string Singer { get; set; }
@@ -14,6 +13,6 @@ namespace escala_server.Models
         public string Tone { get; set; }
         public int? Difficulty { get; set; }
         public DateTime? LastTime { get; set; }
-        public bool Active { get; set; }
+        public Boolean Active { get; set; }
     }
 }

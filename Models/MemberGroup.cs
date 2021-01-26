@@ -4,7 +4,6 @@ namespace escala_server.Models
 {
     public class MemberGroup
     {
-        [Key]
         public long Id { get; set; }
         public long MemberId { get; set; }
         public long GroupId { get; set; }

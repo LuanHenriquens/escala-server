@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj": {}
+    "C:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj": {}
   },
   "projects": {
-    "c:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj": {
+    "C:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj",
+        "projectUniqueName": "C:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj",
         "projectName": "escala-server",
-        "projectPath": "c:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj",
+        "projectPath": "C:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj",
         "packagesPath": "C:\\Users\\walme\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\walme\\Documents\\Luan\\escala-server\\obj\\",
+        "outputPath": "C:\\Users\\walme\\Documents\\Luan\\escala-server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -47,17 +47,17 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.1, )"
+              "version": "[3.1.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.1, )"
+              "version": "[3.1.0, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[3.2.4, )"
             },
             "Pomelo.EntityFrameworkCore.MySql.Design": {
               "target": "Package",
