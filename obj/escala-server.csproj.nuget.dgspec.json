@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj": {}
+    "c:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj": {
+    "c:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj",
+        "projectUniqueName": "c:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj",
         "projectName": "escala-server",
-        "projectPath": "C:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj",
+        "projectPath": "c:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj",
         "packagesPath": "C:\\Users\\walme\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\walme\\Documents\\Luan\\escala-server\\obj\\",
+        "outputPath": "c:\\Users\\walme\\Documents\\Luan\\escala-server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
