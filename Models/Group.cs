@@ -1,13 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace escala_server.Data.Models
+namespace escala_server.Models
 {
     public class Group
     {
-        public int Id { get; set; }
-
+        [Key]
+        public long Id { get; set; }
         public string Name { get; set; }
-
         public bool Active { get; set; }
     }
 }

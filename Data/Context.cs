@@ -1,4 +1,4 @@
-using escala_server.Data.Models;
+using escala_server.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace escala_server.Data

@@ -20,9 +20,9 @@ namespace escala_server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = Configuration["Connection:ConnectionString"];
+            var connection = Configuration["ConexaoMySql:MySqlConnectionString"];
+            services.AddEntityFrameworkMySql().AddDbContext<Context>(options => options.UseMySql(connection).ToString());
             services.AddControllers();
-            services.AddDbContext<Context>(options => options.UseMySql(connection));
             services.AddMvc();
         }
 

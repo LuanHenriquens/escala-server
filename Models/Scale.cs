@@ -1,14 +1,13 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace escala_server.Data.Models
+namespace escala_server.Models
 {
     public class Scale
     {
-        public int Id { get; set; }
-
+        [Key]
+        public long Id { get; set; }
         public DateTime Day { get; set; }
-
         public bool Active { get; set; }
     }
 }
