@@ -1,5 +1,5 @@
 using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace escala_server.Models
 {
@@ -8,5 +8,8 @@ namespace escala_server.Models
         public long Id { get; set; }
         public DateTime Day { get; set; }
         public bool Active { get; set; }
+
+        public ICollection<MemberScale> MemberScale { get; set; }
+        public ICollection<SongScale> SongScale { get; set; }
     }
 }

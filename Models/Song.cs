@@ -1,5 +1,5 @@
 using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace escala_server.Models
 {
@@ -14,5 +14,7 @@ namespace escala_server.Models
         public int? Difficulty { get; set; }
         public DateTime? LastTime { get; set; }
         public Boolean Active { get; set; }
+
+        public ICollection<SongScale> SongScale { get; set; }
     }
 }

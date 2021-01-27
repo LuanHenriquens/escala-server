@@ -21,7 +21,7 @@ namespace escala_server.Data
         {
             mb.Entity<Function>().Property(p => p.Description).HasMaxLength(30).IsRequired();
             mb.Entity<Function>().Property(p => p.Active).IsRequired();
-            
+
             mb.Entity<Group>().Property(p => p.Name).HasMaxLength(50).IsRequired();
 
             mb.Entity<Member>().Property(p => p.Name).HasMaxLength(50).IsRequired();
@@ -33,17 +33,29 @@ namespace escala_server.Data
             mb.Entity<Song>().Property(p => p.Solo).HasMaxLength(20);
             mb.Entity<Song>().Property(p => p.Tone).HasMaxLength(3);
 
-            mb.Entity<MemberFunction>().Property(p => p.MemberId).IsRequired(); //TODO: Aprender a definir a foreign key
-            mb.Entity<MemberFunction>().Property(p => p.FunctionId).IsRequired(); //TODO: Aprender a definir a foreign key
+            mb.Entity<MemberFunction>().HasKey(x => new { x.MemberId, x.FunctionId });
+            mb.Entity<MemberFunction>().HasOne(x => x.Member).WithMany(y => y.MemberFunction).HasForeignKey(x => x.MemberId);
+            mb.Entity<MemberFunction>().HasOne(x => x.Function).WithMany(y => y.MemberFunction).HasForeignKey(x => x.FunctionId);
+            mb.Entity<MemberFunction>().Property(p => p.MemberId).IsRequired();
+            mb.Entity<MemberFunction>().Property(p => p.FunctionId).IsRequired();
 
-            mb.Entity<MemberGroup>().Property(p => p.MemberId).IsRequired(); //TODO: Aprender a definir a foreign key
-            mb.Entity<MemberGroup>().Property(p => p.GroupId).IsRequired(); //TODO: Aprender a definir a foreign key
+            mb.Entity<MemberGroup>().HasKey(x => new { x.MemberId, x.GroupId });
+            mb.Entity<MemberGroup>().HasOne(x => x.Member).WithMany(y => y.MemberGroup).HasForeignKey(x => x.MemberId);
+            mb.Entity<MemberGroup>().HasOne(x => x.Group).WithMany(y => y.MemberGroup).HasForeignKey(x => x.GroupId);
+            mb.Entity<MemberGroup>().Property(p => p.MemberId).IsRequired();
+            mb.Entity<MemberGroup>().Property(p => p.GroupId).IsRequired();
 
-            mb.Entity<MemberScale>().Property(p => p.MemberId).IsRequired(); //TODO: Aprender a definir a foreign key
-            mb.Entity<MemberScale>().Property(p => p.ScaleId).IsRequired(); //TODO: Aprender a definir a foreign key
+            mb.Entity<MemberScale>().HasKey(x => new { x.MemberId, x.ScaleId });
+            mb.Entity<MemberScale>().HasOne(x => x.Member).WithMany(y => y.MemberScale).HasForeignKey(x => x.MemberId);
+            mb.Entity<MemberScale>().HasOne(x => x.Scale).WithMany(y => y.MemberScale).HasForeignKey(x => x.ScaleId);
+            mb.Entity<MemberScale>().Property(p => p.MemberId).IsRequired();
+            mb.Entity<MemberScale>().Property(p => p.ScaleId).IsRequired();
 
-            mb.Entity<SongScale>().Property(p => p.ScaleId).IsRequired(); //TODO: Aprender a definir a foreign key
-            mb.Entity<SongScale>().Property(p => p.SongId).IsRequired(); //TODO: Aprender a definir a foreign key
+            mb.Entity<SongScale>().HasKey(x => new { x.SongId, x.ScaleId });
+            mb.Entity<SongScale>().HasOne(x => x.Song).WithMany(y => y.SongScale).HasForeignKey(x => x.SongId);
+            mb.Entity<SongScale>().HasOne(x => x.Scale).WithMany(y => y.SongScale).HasForeignKey(x => x.ScaleId);
+            mb.Entity<SongScale>().Property(p => p.ScaleId).IsRequired();
+            mb.Entity<SongScale>().Property(p => p.SongId).IsRequired();
         }
     }
 }

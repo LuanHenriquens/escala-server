@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace escala_server.Models
 {
@@ -10,5 +10,9 @@ namespace escala_server.Models
         public string Image { get; set; }
         public bool Adm { get; set; }
         public bool Active { get; set; }
+
+        public ICollection<MemberFunction> MemberFunction { get; set; }
+        public ICollection<MemberGroup> MemberGroup { get; set; }
+        public ICollection<MemberScale> MemberScale { get; set; }
     }
 }
