@@ -6,6 +6,7 @@ namespace escala_server.Models
     {
         public long Id { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }
         public string SecretWord { get; set; }
         public string Image { get; set; }
         public bool Adm { get; set; }
