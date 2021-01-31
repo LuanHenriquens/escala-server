@@ -5,6 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using escala_server.Services.Impl;
+using escala_server.Services;
+using escala_server.Repositories.Impl;
+using escala_server.Repositories;
 
 namespace escala_server
 {
@@ -22,6 +26,10 @@ namespace escala_server
         {
             services.AddDbContext<Context>(options =>
              options.UseMySql(Configuration.GetConnectionString("MySqlConnectionString")));
+
+            services.AddScoped<IMemberService, MemberService>();
+
+            services.AddScoped<IMemberRepository, MemberRepository>();
 
             services.AddControllers();
             services.AddMvc();

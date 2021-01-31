@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace escala_server.Models
+namespace escala_server.Data.Models
 {
     public class Member
     {

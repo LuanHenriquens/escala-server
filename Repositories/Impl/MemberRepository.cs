@@ -1,7 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using escala_server.Data;
-using escala_server.Models;
+using escala_server.Data.DTOs;
+using escala_server.Data.Models;
 
 namespace escala_server.Repositories.Impl
 {
