@@ -1,21 +1,33 @@
+
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using escala_server.Auxiliary;
 using escala_server.Data.DTOs;
 using escala_server.Data.Models;
-using escala_server.Repositories.Impl;
+using escala_server.Middleware.Exceptions;
+using escala_server.Repositories;
 
 namespace escala_server.Services.Impl
 {
     public class MemberService : IMemberService
     {
-        private readonly MemberRepository _memberRepository;
-        public MemberService(MemberRepository memberRepository)
+        private readonly IMemberRepository _memberRepository;
+        private readonly Validator _validator;
+        public MemberService(IMemberRepository memberRepository)
         {
             _memberRepository = memberRepository;
         }
         public async Task<MemberLoginDTO> Registration(MemberRegistrationDTO memberRegistration)
         {
-            //TODO: validar name
-            //TODO: validar email
+            if(string.IsNullOrEmpty(memberRegistration.Name))
+                throw new ValidationException("Favor informar o nome.");
+            if(string.IsNullOrEmpty(memberRegistration.Email))
+                throw new ValidationException("Favor informar o email.");
+            if(_validator.EmailValidator(memberRegistration.Email))
+                throw new ValidationException("Favor informar um email válido.");
+            if(string.IsNullOrEmpty(memberRegistration.SecretWord))
+                throw new ValidationException("Favor informar a senha.");
+            
             //TODO: validar senha
 
             //TODO: encriptar senha
@@ -34,7 +46,7 @@ namespace escala_server.Services.Impl
             memberDTO.Image = member.Image;
             memberDTO.Adm = member.Adm;
 
-            return member;
+            return memberDTO;
         }
     }
 }

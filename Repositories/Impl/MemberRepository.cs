@@ -22,7 +22,7 @@ namespace escala_server.Repositories.Impl
 
                 return member;
             }
-            catch (Exception ex)
+            catch
             {
                 throw new Exception("Não foi possível inserir o membro.");
             }
