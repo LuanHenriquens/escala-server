@@ -1,32 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj": {}
+    "C:\\Luan\\escala-server\\escala-server.csproj": {}
   },
   "projects": {
-    "c:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj": {
+    "C:\\Luan\\escala-server\\escala-server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj",
+        "projectUniqueName": "C:\\Luan\\escala-server\\escala-server.csproj",
         "projectName": "escala-server",
-        "projectPath": "c:\\Users\\walme\\Documents\\Luan\\escala-server\\escala-server.csproj",
-        "packagesPath": "C:\\Users\\walme\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\walme\\Documents\\Luan\\escala-server\\obj\\",
+        "projectPath": "C:\\Luan\\escala-server\\escala-server.csproj",
+        "packagesPath": "C:\\Users\\luanh\\.nuget\\packages\\",
+        "outputPath": "C:\\Luan\\escala-server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\walme\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\luanh\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -82,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.406\\RuntimeIdentifierGraph.json"
         }
       }
     }

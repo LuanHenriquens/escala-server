@@ -16,7 +16,17 @@ namespace escala_server.Controllers
             _memberService = memberService;
         }
         [HttpPost]
-        public async Task<ActionResult<MemberLoginDTO>> RegistrationMember(MemberRegistrationDTO memberRegistration) =>
-            await _memberService.Registration(memberRegistration);
+        public async Task<ActionResult<MemberLoginDTO>> RegistrationMember(MemberRegistrationDTO memberRegistration)
+        {
+            try
+            {
+                return await _memberService.Registration(memberRegistration);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+            
     }
 }
