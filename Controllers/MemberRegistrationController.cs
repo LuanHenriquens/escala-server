@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using escala_server.Data.DTOs;
+using escala_server.Data.DTO;
 using escala_server.Services;
 using Microsoft.AspNetCore.Mvc;
 

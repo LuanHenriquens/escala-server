@@ -3,7 +3,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using escala_server.Auxiliary;
-using escala_server.Data.DTOs;
+using escala_server.Data.DTO;
 using escala_server.Data.Models;
 using escala_server.Middleware.Exceptions;
 using escala_server.Repositories;
@@ -33,6 +33,7 @@ namespace escala_server.Services.Impl
                 member.Name = memberRegistration.Name;
                 member.Email = memberRegistration.Email;
                 member.SecretWord = _security.EncryptPassword(memberRegistration.SecretWord);
+                member.Active = true;
 
                 member = await _memberRepository.Insert(member);
 
