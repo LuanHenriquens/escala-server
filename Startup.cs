@@ -34,6 +34,7 @@ namespace escala_server
             services.AddSingleton<Security, Security>();
 
             services.AddScoped<IMemberService, MemberService>();
+            services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IMemberRepository, MemberRepository>();
 
             services.AddMvc(option => option.EnableEndpointRouting = false);

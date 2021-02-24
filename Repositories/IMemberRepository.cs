@@ -7,5 +7,6 @@ namespace escala_server.Repositories
     public interface IMemberRepository
     {   
         Task<Member> Insert(Member member);
+        Task<Member> ValidateLogin(LoginDTO loginDTO);
     }
 }
