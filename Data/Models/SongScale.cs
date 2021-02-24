@@ -1,4 +1,4 @@
-namespace escala_server.Models
+namespace escala_server.Data.Models
 {
     public class SongScale
     {

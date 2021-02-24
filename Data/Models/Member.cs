@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 
-namespace escala_server.Models
+namespace escala_server.Data.Models
 {
     public class Member
     {
         public long Id { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }
         public string SecretWord { get; set; }
         public string Image { get; set; }
         public bool Adm { get; set; }
