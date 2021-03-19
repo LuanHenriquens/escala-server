@@ -1,8 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using escala_server.Auxiliary;
+using escala_server.Auxiliary.Security.Classes;
 using escala_server.Data;
-using escala_server.Data.DTO;
 using escala_server.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,11 +10,9 @@ namespace escala_server.Repositories.Impl
     public class MemberRepository : IMemberRepository
     {
         private readonly Context _context;
-        private readonly Security _security;
-        public MemberRepository(Context context,Security security)
+        public MemberRepository(Context context)
         {
             _context = context;
-            _security = security;
         }
         public async Task<Member> Insert(Member member)
         {
@@ -31,7 +28,7 @@ namespace escala_server.Repositories.Impl
                 throw new Exception("Não foi possível inserir o membro.");
             }
         }
-        public async Task<Member> ValidateLogin(LoginDTO loginDTO)
+        public async Task<Member> ValidateLogin(User loginDTO)
         {
             try
             {

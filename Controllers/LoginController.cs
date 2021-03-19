@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using escala_server.Data.DTO;
-using escala_server.Services;
+using escala_server.Auxiliary.Security;
+using escala_server.Auxiliary.Security.Classes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace escala_server.Controllers
@@ -10,22 +10,24 @@ namespace escala_server.Controllers
     [ApiController]
     public class LoginController : Controller
     {
-        private readonly ILoginService _loginService;
-        public LoginController(ILoginService loginService)
+        private readonly IAccessManager _accessManager;
+        public LoginController(IAccessManager accessManager)
         {
-            _loginService = loginService;
+            _accessManager = accessManager;
         }
         
         [HttpPost]
-        public async Task<ActionResult<object>> SignIn(LoginDTO loginDTO)
+        public async Task<Token> SignIn(User user)
         {
             try
             {
-                return await _loginService.SignIn(loginDTO);
+                var member = await _accessManager.ValidateCredentials(user);
+                
+                return _accessManager.GenerateToken(member);
             }
             catch (Exception ex)
             {
-                return new Exception(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
     }

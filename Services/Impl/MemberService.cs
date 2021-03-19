@@ -7,6 +7,7 @@ using escala_server.Data.DTO;
 using escala_server.Data.Models;
 using escala_server.Middleware.Exceptions;
 using escala_server.Repositories;
+using escala_server.Auxiliary.Security;
 
 namespace escala_server.Services.Impl
 {
@@ -14,14 +15,14 @@ namespace escala_server.Services.Impl
     {
         private readonly IMemberRepository _memberRepository;
         private readonly Validator _validator;
-        private readonly Security _security;
+        private readonly IEncrypt _encrypt;
         public MemberService(IMemberRepository memberRepository,
             Validator validator,
-            Security security)
+            IEncrypt encrypt)
         {
             _memberRepository = memberRepository;
             _validator = validator;
-            _security = security;
+            _encrypt = encrypt;
         }
         public async Task<MemberLoginDTO> Registration(MemberRegistrationDTO memberRegistration)
         {
@@ -32,7 +33,7 @@ namespace escala_server.Services.Impl
                 Member member = new Member();
                 member.Name = memberRegistration.Name;
                 member.Email = memberRegistration.Email;
-                member.SecretWord = _security.EncryptPassword(memberRegistration.SecretWord);
+                member.SecretWord = _encrypt.EncryptPassword(memberRegistration.SecretWord);
                 member.Active = true;
 
                 member = await _memberRepository.Insert(member);

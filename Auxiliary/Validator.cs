@@ -1,4 +1,3 @@
-using System;
 using System.Text.RegularExpressions;
 
 namespace escala_server.Auxiliary

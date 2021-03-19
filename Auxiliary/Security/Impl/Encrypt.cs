@@ -1,9 +1,9 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace escala_server.Auxiliary
+namespace escala_server.Auxiliary.Security.Impl
 {
-    public class Security
+    public class Encrypt : IEncrypt
     {
         public string EncryptPassword(string password)
         {
@@ -19,4 +19,6 @@ namespace escala_server.Auxiliary
             return password;
         }
     }
+
+    
 }
