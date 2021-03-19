@@ -8,8 +8,8 @@ using escala_server.Data;
 namespace escala_server.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210127162324_Initial")]
-    partial class Initial
+    [Migration("20210224171036_AlterHasMaxLengthMember")]
+    partial class AlterHasMaxLengthMember
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,7 +18,7 @@ namespace escala_server.Migrations
                 .HasAnnotation("ProductVersion", "3.1.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("escala_server.Models.Function", b =>
+            modelBuilder.Entity("escala_server.Data.Models.Function", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,7 @@ namespace escala_server.Migrations
                     b.ToTable("Function");
                 });
 
-            modelBuilder.Entity("escala_server.Models.Group", b =>
+            modelBuilder.Entity("escala_server.Data.Models.Group", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -56,7 +56,7 @@ namespace escala_server.Migrations
                     b.ToTable("Group");
                 });
 
-            modelBuilder.Entity("escala_server.Models.Member", b =>
+            modelBuilder.Entity("escala_server.Data.Models.Member", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -68,6 +68,11 @@ namespace escala_server.Migrations
                     b.Property<bool>("Adm")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasMaxLength(100);
+
                     b.Property<string>("Image")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -78,15 +83,15 @@ namespace escala_server.Migrations
 
                     b.Property<string>("SecretWord")
                         .IsRequired()
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
+                        .HasColumnType("varchar(500) CHARACTER SET utf8mb4")
+                        .HasMaxLength(500);
 
                     b.HasKey("Id");
 
                     b.ToTable("Member");
                 });
 
-            modelBuilder.Entity("escala_server.Models.MemberFunction", b =>
+            modelBuilder.Entity("escala_server.Data.Models.MemberFunction", b =>
                 {
                     b.Property<long>("MemberId")
                         .HasColumnType("bigint");
@@ -104,7 +109,7 @@ namespace escala_server.Migrations
                     b.ToTable("MemberFunction");
                 });
 
-            modelBuilder.Entity("escala_server.Models.MemberGroup", b =>
+            modelBuilder.Entity("escala_server.Data.Models.MemberGroup", b =>
                 {
                     b.Property<long>("MemberId")
                         .HasColumnType("bigint");
@@ -118,9 +123,6 @@ namespace escala_server.Migrations
                     b.Property<bool>("Adm")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint");
-
                     b.HasKey("MemberId", "GroupId");
 
                     b.HasIndex("GroupId");
@@ -128,7 +130,7 @@ namespace escala_server.Migrations
                     b.ToTable("MemberGroup");
                 });
 
-            modelBuilder.Entity("escala_server.Models.MemberScale", b =>
+            modelBuilder.Entity("escala_server.Data.Models.MemberScale", b =>
                 {
                     b.Property<long>("MemberId")
                         .HasColumnType("bigint");
@@ -139,9 +141,6 @@ namespace escala_server.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint");
-
                     b.HasKey("MemberId", "ScaleId");
 
                     b.HasIndex("ScaleId");
@@ -149,7 +148,7 @@ namespace escala_server.Migrations
                     b.ToTable("MemberScale");
                 });
 
-            modelBuilder.Entity("escala_server.Models.Scale", b =>
+            modelBuilder.Entity("escala_server.Data.Models.Scale", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -166,7 +165,7 @@ namespace escala_server.Migrations
                     b.ToTable("Scale");
                 });
 
-            modelBuilder.Entity("escala_server.Models.Song", b =>
+            modelBuilder.Entity("escala_server.Data.Models.Song", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -208,7 +207,7 @@ namespace escala_server.Migrations
                     b.ToTable("Song");
                 });
 
-            modelBuilder.Entity("escala_server.Models.SongScale", b =>
+            modelBuilder.Entity("escala_server.Data.Models.SongScale", b =>
                 {
                     b.Property<long>("SongId")
                         .HasColumnType("bigint");
@@ -219,9 +218,6 @@ namespace escala_server.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint");
-
                     b.HasKey("SongId", "ScaleId");
 
                     b.HasIndex("ScaleId");
@@ -229,60 +225,60 @@ namespace escala_server.Migrations
                     b.ToTable("SongScale");
                 });
 
-            modelBuilder.Entity("escala_server.Models.MemberFunction", b =>
+            modelBuilder.Entity("escala_server.Data.Models.MemberFunction", b =>
                 {
-                    b.HasOne("escala_server.Models.Function", "Function")
+                    b.HasOne("escala_server.Data.Models.Function", "Function")
                         .WithMany("MemberFunction")
                         .HasForeignKey("FunctionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("escala_server.Models.Member", "Member")
+                    b.HasOne("escala_server.Data.Models.Member", "Member")
                         .WithMany("MemberFunction")
                         .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("escala_server.Models.MemberGroup", b =>
+            modelBuilder.Entity("escala_server.Data.Models.MemberGroup", b =>
                 {
-                    b.HasOne("escala_server.Models.Group", "Group")
+                    b.HasOne("escala_server.Data.Models.Group", "Group")
                         .WithMany("MemberGroup")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("escala_server.Models.Member", "Member")
+                    b.HasOne("escala_server.Data.Models.Member", "Member")
                         .WithMany("MemberGroup")
                         .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("escala_server.Models.MemberScale", b =>
+            modelBuilder.Entity("escala_server.Data.Models.MemberScale", b =>
                 {
-                    b.HasOne("escala_server.Models.Member", "Member")
+                    b.HasOne("escala_server.Data.Models.Member", "Member")
                         .WithMany("MemberScale")
                         .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("escala_server.Models.Scale", "Scale")
+                    b.HasOne("escala_server.Data.Models.Scale", "Scale")
                         .WithMany("MemberScale")
                         .HasForeignKey("ScaleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("escala_server.Models.SongScale", b =>
+            modelBuilder.Entity("escala_server.Data.Models.SongScale", b =>
                 {
-                    b.HasOne("escala_server.Models.Scale", "Scale")
+                    b.HasOne("escala_server.Data.Models.Scale", "Scale")
                         .WithMany("SongScale")
                         .HasForeignKey("ScaleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("escala_server.Models.Song", "Song")
+                    b.HasOne("escala_server.Data.Models.Song", "Song")
                         .WithMany("SongScale")
                         .HasForeignKey("SongId")
                         .OnDelete(DeleteBehavior.Cascade)

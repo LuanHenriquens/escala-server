@@ -1,4 +1,4 @@
-namespace escala_server.Data.DTOs
+namespace escala_server.Data.DTO
 {
     public class MemberRegistrationDTO
     {

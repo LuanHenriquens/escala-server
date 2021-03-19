@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
-using escala_server.Data.DTOs;
-using escala_server.Data.Models;
+using escala_server.Data.DTO;
 
 namespace escala_server.Services
 {

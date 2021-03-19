@@ -4,7 +4,6 @@ using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 using escala_server.Middleware.Exceptions;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
 
 namespace escala_server.Middleware
