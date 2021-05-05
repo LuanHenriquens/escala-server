@@ -5,6 +5,6 @@ namespace escala_server.Services
 {
     public interface IMemberService
     {
-        Task<MemberLoginDTO> Registration(MemberRegistrationDTO memberRegistration);
+        Task<LoginReturnDTO> Registration(MemberRegistrationDTO memberRegistration);
     }
 }

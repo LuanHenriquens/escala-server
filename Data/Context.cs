@@ -25,6 +25,7 @@ namespace escala_server.Data
             mb.Entity<Group>().Property(p => p.Name).HasMaxLength(50).IsRequired();
 
             mb.Entity<Member>().Property(p => p.Name).HasMaxLength(50).IsRequired();
+            mb.Entity<Member>().Property(p => p.UserName).HasMaxLength(100).IsRequired();
             mb.Entity<Member>().Property(p => p.Email).HasMaxLength(100).IsRequired();
             mb.Entity<Member>().Property(p => p.SecretWord).HasMaxLength(500).IsRequired();
 

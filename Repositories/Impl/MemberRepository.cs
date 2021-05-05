@@ -32,7 +32,7 @@ namespace escala_server.Repositories.Impl
         {
             try
             {
-                var member = await _context.Member.FirstOrDefaultAsync(c => c.Email == loginDTO.UserEmail &&
+                var member = await _context.Member.FirstOrDefaultAsync(c => c.UserName == loginDTO.UserName &&
                                                                 c.SecretWord == loginDTO.PassWord &&
                                                                 c.Active);
                 await _context.SaveChangesAsync();

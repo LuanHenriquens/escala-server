@@ -16,15 +16,18 @@ namespace escala_server.Services.Impl
         private readonly IMemberRepository _memberRepository;
         private readonly Validator _validator;
         private readonly IEncrypt _encrypt;
+        private readonly IAccessManager _accessManager;
         public MemberService(IMemberRepository memberRepository,
             Validator validator,
-            IEncrypt encrypt)
+            IEncrypt encrypt,
+            IAccessManager accessManager)
         {
             _memberRepository = memberRepository;
             _validator = validator;
             _encrypt = encrypt;
+            _accessManager = accessManager;
         }
-        public async Task<MemberLoginDTO> Registration(MemberRegistrationDTO memberRegistration)
+        public async Task<LoginReturnDTO> Registration(MemberRegistrationDTO memberRegistration)
         {
             try
             {
@@ -32,20 +35,23 @@ namespace escala_server.Services.Impl
                 
                 Member member = new Member();
                 member.Name = memberRegistration.Name;
+                member.UserName = memberRegistration.UserName;
                 member.Email = memberRegistration.Email;
                 member.SecretWord = _encrypt.EncryptPassword(memberRegistration.SecretWord);
                 member.Active = true;
 
                 member = await _memberRepository.Insert(member);
+                
+                var token = _accessManager.GenerateToken(member);
 
-                MemberLoginDTO memberDTO = new MemberLoginDTO();
-                memberDTO.Id = member.Id;
-                memberDTO.Name = member.Name;
-                memberDTO.Email = member.Email;
-                memberDTO.Image = member.Image;
-                memberDTO.Adm = member.Adm;
-
-                return memberDTO;
+                return new LoginReturnDTO()
+                {
+                    Name = member.Name,
+                    Email = member.Email,
+                    Image = member.Image,
+                    Adm = member.Adm,
+                    Token = token
+                };
             }
             catch (Exception ex)
             {
@@ -57,6 +63,8 @@ namespace escala_server.Services.Impl
         {
             if(string.IsNullOrEmpty(member.Name))
                 throw new ValidationException("Favor informar o nome.");
+            if(string.IsNullOrEmpty(member.UserName))
+                throw new ValidationException("Favor informar o nome de usuario para login.");
             if(string.IsNullOrEmpty(member.Email))
                 throw new ValidationException("Favor informar o email.");
             if(!_validator.EmailValidator(member.Email))

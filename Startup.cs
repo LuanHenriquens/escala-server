@@ -36,6 +36,7 @@ namespace escala_server
             services.AddScoped<IAccessManager, AccessManager>();
             
             services.AddScoped<IMemberService, MemberService>();
+            services.AddScoped<ILoginService, LoginService>();
             
             services.AddScoped<IMemberRepository, MemberRepository>();
 

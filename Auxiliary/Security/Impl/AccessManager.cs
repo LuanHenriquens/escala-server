@@ -27,8 +27,8 @@ namespace escala_server.Auxiliary.Security.Impl
         }
         public async Task<Member> ValidateCredentials(User user)
         {
-            if (string.IsNullOrEmpty(user.UserEmail))
-                throw new ValidationException("Informe o email de usuario."); // TODO: Alterar para o Midleware exception
+            if (string.IsNullOrEmpty(user.UserName))
+                throw new ValidationException("Informe o nome de usuario."); // TODO: Alterar para o Midleware exception
             if (string.IsNullOrEmpty(user.PassWord))
                 throw new ValidationException("Informe a senha."); // TODO: Alterar para o Midleware exception
 
@@ -44,11 +44,10 @@ namespace escala_server.Auxiliary.Security.Impl
         public Token GenerateToken(Member member)
         {
             ClaimsIdentity identity = new ClaimsIdentity(
-                new GenericIdentity(member.Email, "Login"),
+                new GenericIdentity(member.UserName, "Login"),
                 new[] {
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
-                    new Claim("member_id", member.Id.ToString()),
-                    new Claim("member_name", member.Name.ToString())
+                    new Claim("member_id", member.Id.ToString())
                 }
             );
 
