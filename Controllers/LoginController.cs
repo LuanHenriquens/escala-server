@@ -18,11 +18,23 @@ namespace escala_server.Controllers
         }
         
         [HttpPost]
-        public async Task<LoginReturnDTO> SignIn(User user)
+        public async Task<object> SignIn(User user)
         {
             try
             {
                 return await _loginService.SignIn(user);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        [HttpGet]
+        public DateTime SignIn()
+        {
+            try
+            {
+                return DateTime.Now.AddMonths(1).AddDays(-DateTime.Now.Day);
             }
             catch (Exception ex)
             {

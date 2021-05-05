@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mvTzdM/8ml1GoNJ5Am3a4UbOm9+KMNLXZuaEioKbHEeMgmnVaeUFU9Fp5NSRjkSYm4P3mIHeqw7m7ffTUl6oFA==",
+  "dgSpecHash": "TeiobcSNfo1CnrdsyahtX7TBvqrOj/RVx2MyTEJzSi9qZ3j1DcZK2A7mDqM4pcqQOi2WIJUwkbL0+kYQEIAHkA==",
   "success": true,
-  "projectFilePath": "C:\\Meus\\escala-server\\escala-server.csproj",
+  "projectFilePath": "c:\\Meus\\escala-server\\escala-server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luanh\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.6\\microsoft.aspnetcore.authentication.jwtbearer.3.1.6.nupkg.sha512",
     "C:\\Users\\luanh\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

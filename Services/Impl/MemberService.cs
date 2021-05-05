@@ -46,8 +46,6 @@ namespace escala_server.Services.Impl
 
                 return new LoginReturnDTO()
                 {
-                    Name = member.Name,
-                    Email = member.Email,
                     Image = member.Image,
                     Adm = member.Adm,
                     Token = token

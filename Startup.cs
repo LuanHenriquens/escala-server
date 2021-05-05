@@ -36,9 +36,14 @@ namespace escala_server
             services.AddScoped<IAccessManager, AccessManager>();
             
             services.AddScoped<IMemberService, MemberService>();
+            services.AddScoped<IScaleService, ScaleService>();
             services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<IHomeService, HomeService>();
             
             services.AddScoped<IMemberRepository, MemberRepository>();
+            services.AddScoped<ISongRepository, SongRepository>();
+            services.AddScoped<IScaleRepository, ScaleRepository>();
+            services.AddScoped<ISongScaleRepository, SongScaleRepository>();
 
             services.AddMvc(option => option.EnableEndpointRouting = false);
 

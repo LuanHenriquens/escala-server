@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Meus\\escala-server\\escala-server.csproj": {}
+    "c:\\Meus\\escala-server\\escala-server.csproj": {}
   },
   "projects": {
-    "C:\\Meus\\escala-server\\escala-server.csproj": {
+    "c:\\Meus\\escala-server\\escala-server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Meus\\escala-server\\escala-server.csproj",
+        "projectUniqueName": "c:\\Meus\\escala-server\\escala-server.csproj",
         "projectName": "escala-server",
-        "projectPath": "C:\\Meus\\escala-server\\escala-server.csproj",
+        "projectPath": "c:\\Meus\\escala-server\\escala-server.csproj",
         "packagesPath": "C:\\Users\\luanh\\.nuget\\packages\\",
-        "outputPath": "C:\\Meus\\escala-server\\obj\\",
+        "outputPath": "c:\\Meus\\escala-server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\luanh\\AppData\\Roaming\\NuGet\\NuGet.Config"
