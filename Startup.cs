@@ -27,7 +27,7 @@ namespace escala_server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Context>(options =>
-                options.UseMySql(Configuration.GetValue<string>("ConnectionString")));
+                options.UseSqlServer(Configuration.GetValue<string>("ConnectionString")));
 
             services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true);
             

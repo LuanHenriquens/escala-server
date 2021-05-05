@@ -1,21 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Luan\\escala-server\\escala-server.csproj": {}
+    "C:\\Meus\\escala-server\\escala-server.csproj": {}
   },
   "projects": {
-    "C:\\Luan\\escala-server\\escala-server.csproj": {
+    "C:\\Meus\\escala-server\\escala-server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Luan\\escala-server\\escala-server.csproj",
+        "projectUniqueName": "C:\\Meus\\escala-server\\escala-server.csproj",
         "projectName": "escala-server",
-        "projectPath": "C:\\Luan\\escala-server\\escala-server.csproj",
+        "projectPath": "C:\\Meus\\escala-server\\escala-server.csproj",
         "packagesPath": "C:\\Users\\luanh\\.nuget\\packages\\",
-        "outputPath": "C:\\Luan\\escala-server\\obj\\",
+        "outputPath": "C:\\Meus\\escala-server\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\luanh\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
@@ -48,6 +45,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.14, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -86,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

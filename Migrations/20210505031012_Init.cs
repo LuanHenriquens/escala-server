@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace escala_server.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +12,7 @@ namespace escala_server.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(maxLength: 30, nullable: false),
                     Active = table.Column<bool>(nullable: false)
                 },
@@ -27,7 +26,7 @@ namespace escala_server.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Active = table.Column<bool>(nullable: false)
                 },
@@ -41,9 +40,10 @@ namespace escala_server.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    SecretWord = table.Column<string>(maxLength: 100, nullable: false),
+                    Email = table.Column<string>(maxLength: 100, nullable: false),
+                    SecretWord = table.Column<string>(maxLength: 500, nullable: false),
                     Image = table.Column<string>(nullable: true),
                     Adm = table.Column<bool>(nullable: false),
                     Active = table.Column<bool>(nullable: false)
@@ -58,7 +58,7 @@ namespace escala_server.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Day = table.Column<DateTime>(nullable: false),
                     Active = table.Column<bool>(nullable: false)
                 },
@@ -72,7 +72,7 @@ namespace escala_server.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Singer = table.Column<string>(maxLength: 50, nullable: false),
                     Link = table.Column<string>(maxLength: 100, nullable: true),
@@ -118,7 +118,6 @@ namespace escala_server.Migrations
                 {
                     MemberId = table.Column<long>(nullable: false),
                     GroupId = table.Column<long>(nullable: false),
-                    Id = table.Column<long>(nullable: false),
                     Adm = table.Column<bool>(nullable: false),
                     Active = table.Column<bool>(nullable: false)
                 },
@@ -145,7 +144,6 @@ namespace escala_server.Migrations
                 {
                     ScaleId = table.Column<long>(nullable: false),
                     MemberId = table.Column<long>(nullable: false),
-                    Id = table.Column<long>(nullable: false),
                     Active = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -171,7 +169,6 @@ namespace escala_server.Migrations
                 {
                     ScaleId = table.Column<long>(nullable: false),
                     SongId = table.Column<long>(nullable: false),
-                    Id = table.Column<long>(nullable: false),
                     Active = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>

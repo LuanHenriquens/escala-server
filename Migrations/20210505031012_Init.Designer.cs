@@ -2,34 +2,38 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using escala_server.Data;
 
 namespace escala_server.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210127162324_Initial")]
-    partial class Initial
+    [Migration("20210505031012_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.8")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("ProductVersion", "3.1.14")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("escala_server.Models.Function", b =>
+            modelBuilder.Entity("escala_server.Data.Models.Function", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("varchar(30) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(30)")
                         .HasMaxLength(30);
 
                     b.HasKey("Id");
@@ -37,18 +41,19 @@ namespace escala_server.Migrations
                     b.ToTable("Function");
                 });
 
-            modelBuilder.Entity("escala_server.Models.Group", b =>
+            modelBuilder.Entity("escala_server.Data.Models.Group", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
@@ -56,37 +61,43 @@ namespace escala_server.Migrations
                     b.ToTable("Group");
                 });
 
-            modelBuilder.Entity("escala_server.Models.Member", b =>
+            modelBuilder.Entity("escala_server.Data.Models.Member", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<bool>("Adm")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<string>("Image")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("SecretWord")
                         .IsRequired()
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
 
                     b.HasKey("Id");
 
                     b.ToTable("Member");
                 });
 
-            modelBuilder.Entity("escala_server.Models.MemberFunction", b =>
+            modelBuilder.Entity("escala_server.Data.Models.MemberFunction", b =>
                 {
                     b.Property<long>("MemberId")
                         .HasColumnType("bigint");
@@ -95,7 +106,7 @@ namespace escala_server.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<bool>("Active")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.HasKey("MemberId", "FunctionId");
 
@@ -104,7 +115,7 @@ namespace escala_server.Migrations
                     b.ToTable("MemberFunction");
                 });
 
-            modelBuilder.Entity("escala_server.Models.MemberGroup", b =>
+            modelBuilder.Entity("escala_server.Data.Models.MemberGroup", b =>
                 {
                     b.Property<long>("MemberId")
                         .HasColumnType("bigint");
@@ -113,13 +124,10 @@ namespace escala_server.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<bool>("Active")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<bool>("Adm")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bit");
 
                     b.HasKey("MemberId", "GroupId");
 
@@ -128,7 +136,7 @@ namespace escala_server.Migrations
                     b.ToTable("MemberGroup");
                 });
 
-            modelBuilder.Entity("escala_server.Models.MemberScale", b =>
+            modelBuilder.Entity("escala_server.Data.Models.MemberScale", b =>
                 {
                     b.Property<long>("MemberId")
                         .HasColumnType("bigint");
@@ -137,10 +145,7 @@ namespace escala_server.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<bool>("Active")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bit");
 
                     b.HasKey("MemberId", "ScaleId");
 
@@ -149,58 +154,60 @@ namespace escala_server.Migrations
                     b.ToTable("MemberScale");
                 });
 
-            modelBuilder.Entity("escala_server.Models.Scale", b =>
+            modelBuilder.Entity("escala_server.Data.Models.Scale", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("Day")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Scale");
                 });
 
-            modelBuilder.Entity("escala_server.Models.Song", b =>
+            modelBuilder.Entity("escala_server.Data.Models.Song", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("Difficulty")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("LastTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Link")
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("Singer")
                         .IsRequired()
-                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("Solo")
-                        .HasColumnType("varchar(20) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
                     b.Property<string>("Tone")
-                        .HasColumnType("varchar(3) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(3)")
                         .HasMaxLength(3);
 
                     b.HasKey("Id");
@@ -208,7 +215,7 @@ namespace escala_server.Migrations
                     b.ToTable("Song");
                 });
 
-            modelBuilder.Entity("escala_server.Models.SongScale", b =>
+            modelBuilder.Entity("escala_server.Data.Models.SongScale", b =>
                 {
                     b.Property<long>("SongId")
                         .HasColumnType("bigint");
@@ -217,10 +224,7 @@ namespace escala_server.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<bool>("Active")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bit");
 
                     b.HasKey("SongId", "ScaleId");
 
@@ -229,60 +233,60 @@ namespace escala_server.Migrations
                     b.ToTable("SongScale");
                 });
 
-            modelBuilder.Entity("escala_server.Models.MemberFunction", b =>
+            modelBuilder.Entity("escala_server.Data.Models.MemberFunction", b =>
                 {
-                    b.HasOne("escala_server.Models.Function", "Function")
+                    b.HasOne("escala_server.Data.Models.Function", "Function")
                         .WithMany("MemberFunction")
                         .HasForeignKey("FunctionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("escala_server.Models.Member", "Member")
+                    b.HasOne("escala_server.Data.Models.Member", "Member")
                         .WithMany("MemberFunction")
                         .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("escala_server.Models.MemberGroup", b =>
+            modelBuilder.Entity("escala_server.Data.Models.MemberGroup", b =>
                 {
-                    b.HasOne("escala_server.Models.Group", "Group")
+                    b.HasOne("escala_server.Data.Models.Group", "Group")
                         .WithMany("MemberGroup")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("escala_server.Models.Member", "Member")
+                    b.HasOne("escala_server.Data.Models.Member", "Member")
                         .WithMany("MemberGroup")
                         .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("escala_server.Models.MemberScale", b =>
+            modelBuilder.Entity("escala_server.Data.Models.MemberScale", b =>
                 {
-                    b.HasOne("escala_server.Models.Member", "Member")
+                    b.HasOne("escala_server.Data.Models.Member", "Member")
                         .WithMany("MemberScale")
                         .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("escala_server.Models.Scale", "Scale")
+                    b.HasOne("escala_server.Data.Models.Scale", "Scale")
                         .WithMany("MemberScale")
                         .HasForeignKey("ScaleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("escala_server.Models.SongScale", b =>
+            modelBuilder.Entity("escala_server.Data.Models.SongScale", b =>
                 {
-                    b.HasOne("escala_server.Models.Scale", "Scale")
+                    b.HasOne("escala_server.Data.Models.Scale", "Scale")
                         .WithMany("SongScale")
                         .HasForeignKey("ScaleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("escala_server.Models.Song", "Song")
+                    b.HasOne("escala_server.Data.Models.Song", "Song")
                         .WithMany("SongScale")
                         .HasForeignKey("SongId")
                         .OnDelete(DeleteBehavior.Cascade)
